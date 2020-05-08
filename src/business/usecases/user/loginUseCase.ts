@@ -6,11 +6,11 @@ interface LoginUCInput {
     password: string
 }
 
-export class LoginUC {
+export default class LoginUC {
     constructor(private dataBase: UserDB) { }
 
     async execute(input: LoginUCInput) {
-        const user = await this.dataBase.getUserByEmail(input.email)
+        const user = await this.dataBase.getUser(input.email)
         const token = User.generateToken(user.id)
         const passwordIsCorrect = User.checkPassword(input.password, user.password)
 

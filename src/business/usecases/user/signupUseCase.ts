@@ -1,6 +1,5 @@
 import UserDB from "../../../data/UserDataBase";
 import { v4 } from "uuid";
-import * as bcrypt from 'bcrypt';
 import User from "../../entities/user";
 
 interface SignupInput {

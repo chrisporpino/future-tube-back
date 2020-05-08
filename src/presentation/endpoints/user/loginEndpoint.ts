@@ -1,6 +1,6 @@
 import { Response, Request } from "express";
 import UserDB from "../../../data/UserDataBase";
-import { LoginUC } from "../../../business/usecases/user/loginUseCase";
+import LoginUC from "../../../business/usecases/user/LoginUseCase";
 
 export async function loginEndpoint(req: Request, res: Response) {
     try {

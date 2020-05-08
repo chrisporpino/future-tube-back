@@ -10,12 +10,14 @@ export default class User {
         private birthDate: Date,
         private photo: string
     ) { }
+
     getId = () => this.id
     getName = () => this.name
     getEmail = () => this.email
     getPassword = () => this.password
     getbirthDate = () => this.birthDate
     getPhoto = () => this.photo
+
     static generateToken(id: string) {
         const jwtKey = process.env.JWT_KEY as string
         const token = jwt.sign(
@@ -25,20 +27,23 @@ export default class User {
         )
         return token
     }
+
     static getTokenData(token: string) {
         const jwtKey = process.env.JWT_KEY as string
         const tokenData = jwt.verify(token, jwtKey) as { id: string }
         return tokenData
     }
+
     static encryptPassword(password: string) {
         const jwtKey = process.env.JWT_KEY as string
         const token = jwt.sign(
             { password },
             jwtKey,
-            { expiresIn: "2400000000000000000000000000000h" }
+            { expiresIn: "10000000000000000000000h" }
         )
         return token
     }
+
     static checkPassword(password: string, hashPassword: string) {
         const jwtKey = process.env.JWT_KEY as string
         const tokenData = jwt.verify(hashPassword, jwtKey) as { password: string }
