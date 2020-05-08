@@ -1,6 +1,6 @@
 import { Response, Request } from "express";
 import UserDB from "../../../data/UserDataBase";
-import SignupUC from "../../../business/usecases/users/signupUseCase";
+import SignupUC from "../../../business/usecases/user/signupUseCase";
 
 export default async function signupEndpoint(req: Request, res: Response) {
     try {
