@@ -4,6 +4,7 @@ import { getVideoDetailsEndpoint } from './endpoints/videos/getVideoDetailsEndpo
 import { loginEndpoint } from './endpoints/user/loginEndpoint'
 import signupEndpoint from './endpoints/user/signupEndpoint'
 import changePasswordEndpoint from './endpoints/user/changePasswordEndpoint'
+import uploadVideoEndpoint from './endpoints/videos/uploadVideoEndpoint'
 
 const app = express()
 const cors = require("cors")
@@ -11,10 +12,15 @@ const cors = require("cors")
 app.use(express.json())
 app.use(cors())
 
-app.post("/login", loginEndpoint)
-app.get("/videos", getAllVideosEndpoint)
 app.post("/user/signup", signupEndpoint)
-app.get("/video-details", getVideoDetailsEndpoint)
+app.post("/user/login", loginEndpoint)
 app.post("/user/change-password", changePasswordEndpoint)
+
+// app.get("/videos", getAllVideosEndpoint)
+
+app.post("/videos/upload", uploadVideoEndpoint)
+app.get("/videos/all", getAllVideosEndpoint)
+app.get("/videos/details", getVideoDetailsEndpoint)
+
 
 export default app

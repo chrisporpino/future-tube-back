@@ -1,11 +1,11 @@
-import VideoDetailsGateway from "../../gateways/videoDetailsGateway";
+import { VideoDetailsGateway } from "../../gateways/videoGateway";
 
 export class GetVideoDetailsUC {
-    constructor(private dataBase: VideoDetailsGateway) {}
+  constructor(private dataBase: VideoDetailsGateway) {}
 
-    async execute(id: string){
-        const details = await this.dataBase.getVideoDetails(id)
+  async execute(id: string) {
+    const details = await this.dataBase.getVideoDetails(id);
 
-        return {details}
-    }
+    return { details };
+  }
 }
