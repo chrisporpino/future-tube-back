@@ -1,7 +1,7 @@
-import VideoGateway from "../../gateways/videoGateway";
+import { AllVideosGateway } from "../../gateways/videoGateway";
 
 export class GetAllVideosUC {
-    constructor(private dataBase: VideoGateway) {}
+    constructor(private dataBase: AllVideosGateway) {}
 
     async execute(page: number){
         const videos = await this.dataBase.getAllVideos(page)

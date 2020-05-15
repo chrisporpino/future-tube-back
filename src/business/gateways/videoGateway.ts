@@ -1,5 +1,9 @@
-import Video from "../entities/video";
+import { Video , VideoDetails } from "../entities/video";
 
-export default interface VideoGateway {
+export interface AllVideosGateway {
     getAllVideos(page: number): Promise<Video[]>
+}
+
+export interface VideoDetailsGateway {
+    getVideoDetails(id: string): Promise<VideoDetails[]>
 }
