@@ -55,6 +55,18 @@ export default class VideoDB extends MainDB implements AllVideosGateway {
     }
   }
 
+  async getUserVideos(id: string) {
+    try{
+      const result = await this.connection.raw(
+        `SELECT * FROM ${this.videosTableName} WHERE userId = "${id}"`
+      )
+
+      return result[0]
+    } catch (err) {
+      throw new Error(err.sqlMessage)
+    }
+  }
+
   async deleteVideo(id: string) {
 
     try{
