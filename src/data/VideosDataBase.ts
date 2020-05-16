@@ -54,4 +54,15 @@ export default class VideoDB extends MainDB implements AllVideosGateway {
       throw new Error(err.sqlMessage);
     }
   }
+
+  async deleteVideo(id: string) {
+
+    try{
+      await this.connection.raw(`
+        DELETE FROM ${this.videosTableName} WHERE id = "${id}"
+      `)
+    } catch (err) {
+      throw new Error(err.sqlMessage)
+    }
+  }
 }
