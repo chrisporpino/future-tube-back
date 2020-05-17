@@ -67,6 +67,22 @@ export default class VideoDB extends MainDB implements AllVideosGateway {
     }
   }
 
+  async editVideo (id: string, newTitle: string, newDescription: string) {
+
+    try {
+      await this.connection.raw(`
+        UPDATE ${this.videosTableName}
+        SET title = "${newTitle}" WHERE id = "${id}"
+      `)
+      await this.connection.raw(`
+        UPDATE ${this.videosTableName}
+        SET description = "${newDescription}" WHERE id = "${id}"
+      `)
+    } catch (err) {
+      throw new Error(err.sqlMessage)
+    }
+  }
+
   async deleteVideo(id: string) {
 
     try{
